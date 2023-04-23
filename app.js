@@ -1,6 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json());
@@ -12,6 +15,9 @@ app.use(
 app.listen(PORT, () =>
   console.log(`Server is running on port: http://localhost:${PORT}`)
 );
+
+
+
 
 /* {
             "type": "amadeusOAuth2Token",
@@ -40,8 +46,8 @@ curl "https://test.api.amadeus.com/v1/security/oauth2/token" \
 
 import Amadeus from "amadeus";
 const amadeus = new Amadeus({
-  clientId: "4bhAefH4E5INPWaqOfTJMZOa71KVAlUo",
-  clientSecret: "0j5ttOJNZesGSoSl",
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
 });
 
 
@@ -52,7 +58,7 @@ const verifyApiKey = (req, res, next) => {
     return res.status(401).json({ message: "API key is missing" });
   }
 
-  const validApiKey = "hello"; // Replace with your actual API key
+  const validApiKey = process.env.API_KEY; // Replace with your actual API key
 
   if (apiKey !== validApiKey) {
     return res.status(403).json({ message: "Invalid API key" });

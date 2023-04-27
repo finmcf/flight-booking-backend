@@ -107,7 +107,7 @@ app.get('/airport-route', verifyApiKey, (req, res) => {
 
 
 
-app.get(`/flight-search`, verifyApiKey, (req, res) => {
+app.get(`/flight-search`, (req, res) => {
   const originCode = req.query.originCode;
   const destinationCode = req.query.destinationCode;
   const dateOfDeparture = req.query.dateOfDeparture;
@@ -115,7 +115,7 @@ app.get(`/flight-search`, verifyApiKey, (req, res) => {
   const children = req.query.children;
   const travelClass = req.query.travelClass;
   const adults = req.query.adults;
-  const nonStop = false;
+  const nonStop = true;
 
   // Find the cheapest flights
   amadeus.shopping.flightOffersSearch

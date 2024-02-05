@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 const PORT = 4000;
@@ -13,11 +13,8 @@ app.use(
   })
 );
 app.listen(PORT, () =>
-  console.log(`Server is running on port: http://localhost:${PORT}`)
+  console.log(`Server is ning on port: http://localhost:${PORT}`)
 );
-
-
-
 
 /* {
             "type": "amadeusOAuth2Token",
@@ -49,7 +46,6 @@ const amadeus = new Amadeus({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
 });
-
 
 const verifyApiKey = (req, res, next) => {
   const apiKey = req.headers["x-api-key"];
@@ -83,13 +79,11 @@ app.get(`/city-and-airport-search/:parameter`, (req, res) => {
     });
 });
 
-
-app.get('/airport-route', verifyApiKey, (req, res) => {
+app.get("/airport-route", verifyApiKey, (req, res) => {
   const departureAirportCode = req.query.departureAirportCode;
 
   // Your existing logic to fetch routes based on the departureAirportCode
   // and send the response
-
 
   amadeus.airport.directDestinations
     .get({
@@ -101,11 +95,7 @@ app.get('/airport-route', verifyApiKey, (req, res) => {
     .catch(function (response) {
       res.send(response);
     });
-
 });
-
-
-
 
 app.get(`/flight-search`, (req, res) => {
   const originCode = req.query.originCode;
@@ -115,7 +105,7 @@ app.get(`/flight-search`, (req, res) => {
   const children = req.query.children;
   const travelClass = req.query.travelClass;
   const adults = req.query.adults;
-  const nonStop = true;
+  const nonStop = false;
 
   // Find the cheapest flights
   amadeus.shopping.flightOffersSearch

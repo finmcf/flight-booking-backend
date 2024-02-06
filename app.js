@@ -13,7 +13,7 @@ app.use(
   })
 );
 app.listen(PORT, () =>
-  console.log(`Server is ning on port: http://localhost:${PORT}`)
+  console.log(`Server ining on port: http://localhost:${PORT}`)
 );
 
 /* {

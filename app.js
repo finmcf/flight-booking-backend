@@ -12,7 +12,7 @@ app.use(
     origin: "http://localhost:19006",
   })
 );
-app.listen(PORT, () => console.log(` http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
 /* {
             "type": "amadeusOAuth2Token",

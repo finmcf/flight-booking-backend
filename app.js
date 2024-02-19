@@ -49,7 +49,7 @@ const verifyApiKey = (req, res, next) => {
   const apiKey = req.headers["x-api-key"];
 
   if (!apiKey) {
-    return res.status(401).json({ message: "the key is missing" });
+    return res.status(401).json({ message: "key is missing" });
   }
 
   const validApiKey = process.env.API_KEY; // Replace with your actual API key

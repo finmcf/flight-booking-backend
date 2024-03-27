@@ -55,7 +55,7 @@ const verifyApiKey = (req, res, next) => {
   const validApiKey = process.env.API_KEY; // Replace with your actual API key
 
   if (apiKey !== validApiKey) {
-    return res.status(403).json({ message: "no key" });
+    return res.status(403).json({ message: "invalid key" });
   }
 
   next();
